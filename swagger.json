@@ -1,0 +1,75 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "BMI Calculator",
+    "description": "BMI Calculator API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "BMI Calculator",
+      "description": "API for BMI calculation in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/calculateBMI/{weight}/{height}": {
+      "get": {
+        "tags": [
+          "BMI Calculator"
+        ],
+        "summary": "Get BMI",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "BMI is generated",
+            "schema": {
+              "$ref": "#/definitions/BMI"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "weight",
+          "in": "path",
+          "required": true,
+          "description": "Weight of the person (In Kg)",
+          "type": "number"
+        },
+        {
+          "name": "height",
+          "in": "path",
+          "required": true,
+          "description": "Height of the person (in Meters)",
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "BMI": {
+      "properties": {
+        "result": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
